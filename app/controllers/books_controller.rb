@@ -57,6 +57,21 @@ class BooksController < ApplicationController
     end
   end
 
+  # def search
+  def search
+    if params[:search].nil?
+      return
+    elsif params[:search].blank?
+      flash.now[:danger] = "Empty search string"
+      return
+    else
+      url = "https://www.googleapis.com/books/v1/volumes"
+      text = params[:search]
+      res = Faraday.get(url, q: text, langRestrict: "ja", maxResults: 40)
+      @google_books = JSON.parse(res.body)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
