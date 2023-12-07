@@ -26,7 +26,15 @@
     <%= form.text_area :desc %>
   </div>
 
-  <div class="btn btn-primary">
-    <%= form.submit %>
+  <div class="mt-4 d-flex justify-content-between">
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <%= form.submit "Submit", class: "btn btn-primary" %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to "Barcode", books_path, class: "btn btn-secondary" %>
+      </li>
+    </ul>
   </div>
+
 <% end %>
