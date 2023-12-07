@@ -2,13 +2,21 @@
 
 <h1>Books</h1>
 
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
-  <% end %>
+<div id="books" class="container">
+  <div class="row">
+    <% @books.each do |book| %>
+      <div class="col-md-4 mb-4"> 
+        <div class="card">
+          <%= render book %>
+          <div class="card-body">
+            <p class="card-text">
+              <%= link_to "Show this book", book, class: "btn btn-primary" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New book", new_book_path %>
+<%= link_to "New book", new_book_path, class:"btn btn-primary" %>
